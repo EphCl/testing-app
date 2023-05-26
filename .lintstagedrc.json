@@ -1,4 +1,4 @@
 {
-  "src/*": "npm run format:fix",
-  "src/*.{ts,js}": "npm run lint:fix"
+  "./src/*": "npm run format:fix",
+  "./src/*.{ts,js}": "npm run lint:fix"
 }
