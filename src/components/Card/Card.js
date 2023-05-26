@@ -3,7 +3,7 @@ import "./Card.css";
 import PropTypes from "prop-types";
 
 const Card = ({ children }) => (
-  <section className="Card card">
+  <section className="Card card"
     <div className="card-content">{children}</div>
   </section>
 );

@@ -1,20 +1,20 @@
 const config = {
   env: {
     browser: true,
-    es2021: true,
+    es2021: true
   },
   extends: [
     "eslint:recommended",
     "plugin:react/recommended",
-    "eslint-config-prettier",
+    "eslint-config-prettier"
   ],
   overrides: [],
   parserOptions: {
     ecmaVersion: 2019,
     sourceType: "module",
     ecmaFeatures: {
-      jsx: true,
-    },
+      jsx: true
+    }
   },
   parser: "@babel/eslint-parser",
   plugins: ["react"],
@@ -24,8 +24,8 @@ const config = {
     "no-unsafe-negation": "error",
     "no-unused-vars": "error",
     "no-unexpected-multiline": "error",
-    "no-undef": "error",
-  },
+    "no-undef": "error"
+  }
 };
 
 module.exports = config;
