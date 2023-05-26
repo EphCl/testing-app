@@ -6,10 +6,17 @@
     "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --mode=development",
     "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --mode=production",
     "postbuild": "cp ./public/index.html ./dist/index.html",
-    "preview": "serve --no-clipboard --single --listen 8080 dist"
+    "preview": "serve --no-clipboard --single --listen 8080 dist",
+    "test": "npx jest",
+    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|json)\"",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "check": "npm run lint && npm run build && npm run format:check",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@babel/eslint-parser": "^7.21.8",
     "@babel/plugin-transform-runtime": "^7.7.4",
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
@@ -17,6 +24,9 @@
     "babel-loader": "^8.0.6",
     "cross-env": "^7.0.3",
     "css-loader": "^3.2.0",
+    "eslint": "^8.41.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-react": "^7.32.2",
     "file-loader": "^5.0.2",
     "prettier": "^1.19.1",
     "prop-types": "^15.7.2",
@@ -24,11 +34,16 @@
     "style-loader": "^1.0.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0"
+    "webpack-dev-server": "^3.9.0",
+    "husky": "^8.0.0"
   },
   "dependencies": {
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "6.2.1"
-  }
+  },
+  "description": "- installer le projet : `npm i`\r - lancer le projet en local : `npm start`",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

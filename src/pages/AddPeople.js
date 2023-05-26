@@ -4,15 +4,16 @@ import React, {
   useContext,
   useEffect,
   useMemo,
-  useState,
+  useState
 } from "react";
 import Input from "../components/Input";
+import PropTypes from "prop-types";
 
 const INITIAL = {
   firstname: "John",
   lastname: "Doe",
   email: "john.doe@gmail.com",
-  manager: "unknown",
+  manager: "unknown"
 };
 
 const Form = ({ defaultValue = INITIAL }) => {
@@ -20,11 +21,11 @@ const Form = ({ defaultValue = INITIAL }) => {
   const { setResult } = useContext(AddPeopleContext);
   const [errorMessage, setErrorMessage] = React.useState(null);
 
-  const handleChange = useCallback((e) => {
-    setData((prevState) => ({ ...prevState, [e.target.name]: e.target.value }));
+  const handleChange = useCallback(e => {
+    setData(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
   }, []);
 
-  const handleSubmit = useCallback(async (e) => {
+  const handleSubmit = useCallback(async e => {
     e.preventDefault();
     setErrorMessage(null);
     setResult(null);
@@ -36,14 +37,14 @@ const Form = ({ defaultValue = INITIAL }) => {
           method: "POST",
           Accept: "application/json",
           headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
           },
           body: JSON.stringify({
             firstname: firstname.value,
             lastname: lastname.value,
             email: email.value,
-            manager: manager.value,
-          }),
+            manager: manager.value
+          })
         }
       );
       const { responseBody, anomaly = null } = await data.json();
@@ -105,6 +106,10 @@ const Form = ({ defaultValue = INITIAL }) => {
   );
 };
 
+Form.propTypes = {
+  defaultValue: PropTypes.object // Valide que 'defaultValue' est de type 'object' (facultatif)
+};
+
 const DisplayData = () => {
   const { result } = useContext(AddPeopleContext);
   return (
@@ -112,7 +117,7 @@ const DisplayData = () => {
       <h4>Données sauvegardées :</h4>
       {result ? (
         <ul className="collection">
-          {Object.keys(result).map((key) => (
+          {Object.keys(result).map(key => (
             <li key={key} className="collection-item">
               {result[key]}
             </li>
@@ -135,7 +140,7 @@ const AddPeople = () => {
   const [result, setResult] = React.useState(null);
   const contextResult = useMemo(() => ({ result, setResult }), [
     result,
-    setResult,
+    setResult
   ]);
 
   return (
